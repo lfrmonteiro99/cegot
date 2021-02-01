@@ -1,0 +1,17 @@
+.login-form{
+    padding: 20px;
+    background: green;
+    opacity: 0.5;
+}
+
+.login-form:hover{
+    opacity:1;
+}
+
+.login-container{
+    position: fixed;
+  top: 50%;
+  left: 20%;
+  margin-top: -50px;
+  margin-left: -100px;
+}
