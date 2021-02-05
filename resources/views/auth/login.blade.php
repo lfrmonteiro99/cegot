@@ -1,7 +1,7 @@
 @extends('layout.index')
 
 @section('content')
-<div class="container login-container" style="z-index: 100000000">
+<div class="container login-container login-page" style="z-index: 100000000">
 <div class="row">
 <div class="col-12">
 <div class="container">
@@ -9,20 +9,31 @@
 <div class="col-4 mx-auto justify-content-center">
 <form action="{{url('verifyLogin')}}" method="post">
 @csrf 
-    <div class="login-form">
-<div class="form-group">
-<label for="email">Email</label>
-<input class="form-control" type="email" required name="email" id="email">
-</div>
-<div class="form-group">
-    <label for="password">Password</label>
-    <input class="form-control" type="password" name="password" id="password">
-</div>
-<div class="form-group mt-3">
-    <button class="btn btn-success" style="width: 100%">
-        Login
-    </button>
-</div>
+    <div class="card card-login login-form">
+        <div class="card-header text-center" data-background-color="primary">
+<h4 class="card-title">Login</h4>
+        </div>
+        <div class="card-content">
+            <div class="input-group">
+                <span class="input-group-addon"><i class="fas fa-envelope"></i></span>
+                <div class="form-group label-floating is-empty">
+                <input class="form-control" type="email" placeholder="Email" required name="email" id="email">
+                </div>
+            </div>
+            <div class="input-group">
+                <span class="input-group-addon"><i class="fas fa-lock"></i></span>
+                <div class="form-group label-floating is-empty">
+                <input class="form-control" type="password" placeholder="Password" required name="password" id="password">
+                </div>
+            </div>
+        </div>
+        <div class="footer text-center">
+                    <button type="submit" class="btn btn-primary btn-simple btn-wd btn-lg">
+                        Entrar
+                    </button>
+                </div>
+            
+    
 </div>
 
 </form>
@@ -33,6 +44,7 @@
 </div>
 
 </div>
+
 <div id="carouselExampleIndicators" class="carousel slide" data-bs-ride="carousel">
   <ol class="carousel-indicators">
     <li data-bs-target="#carouselExampleIndicators" data-bs-slide-to="0" class="active"></li>
