@@ -41,7 +41,6 @@
                             <span><i class="far fa-folder fa-2x"></i></span>
                             <p>{{$directory}}</p>
                         </div>
-
                     </div>
                     @else
                     <?php
