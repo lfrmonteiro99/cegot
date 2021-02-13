@@ -24,7 +24,7 @@ class AuthController extends Controller
                 'email' => 'The provided credentials do not match our records.',
             ]);
 
-        }catch(Throwable $e){
+        }catch(\Throwable $e){
             dd($e->getMessage());
             report($e);
 

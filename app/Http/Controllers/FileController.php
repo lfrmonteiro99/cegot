@@ -3,8 +3,13 @@
 namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
-
+use Illuminate\Support\Facades\File;
+use Illuminate\Support\Facades\Storage;
+use Symfony\Component\Console\Input\Input;
 use ZipArchive;
+Use Session;
+use Yajra\DataTables\Facades\DataTables;
+use Illuminate\Support\Collection;
 
 class FileController extends Controller
 {
@@ -36,8 +41,8 @@ class FileController extends Controller
             }
 
             $filename = "storage/download.zip";
-            
-            if(file_exists($filename)){
+
+            if (file_exists($filename)) {
                 unlink($filename);
             }
 
@@ -51,7 +56,7 @@ class FileController extends Controller
 
             if ($zip->open($filename, ZipArchive::CREATE) === TRUE) {
                 foreach ($files as $file) {
-                    $newFilename = substr($file,strrpos($file,'/') + 1);
+                    $newFilename = substr($file, strrpos($file, '/') + 1);
                     $zip->addFile($file, $newFilename);
                 }
                 $zip->close();
@@ -65,5 +70,69 @@ class FileController extends Controller
         } catch (\Exception $e) {
             echo $e->getMessage();
         }
+    }
+
+    public function index()
+    {
+     /*   $path = storage_path() . '/app/public/atas';
+        $directoriesRaw = scandir($path);
+
+        $directories = [];
+
+        foreach ($directoriesRaw as $dir) {
+            if ($dir != '.' && $dir != '..')
+                $directories[] = ['name' => $dir, 'folder' => true];
+        } */
+
+        return view('private.files.index');
+    }
+
+    public function getIndexTable(){
+        $path = storage_path().'/app/public/atas';
+        $directoriesRaw = scandir($path);
+        foreach ($directoriesRaw as $dir) {
+            if ($dir != '.' && $dir!= '..') {
+                    $directories[] = ['name' => $dir, 'folder' => is_dir($path . "/" . $dir), 'path' => $path . "/" . $dir];
+            }
+        }
+
+        $files = Collection::make($directories);
+
+        return DataTables::of($files)
+        ->editColumn('name', function($file){
+            return $file['name'];
+        })
+            
+            ->addColumn('action', function ($file) {
+                //return '<a href="'.$route.'" class="btn btn-simple btn-warning btn-icon edit" data-bs-toggle="tooltip" data-bs-placement="left" title="See"><i class="material-icons">dvr</i></a>
+                //<a onclick="javascript:removeConfirmation('.$user->id.')" class="btn btn-simple btn-danger btn-icon remove" data-bs-toggle="tooltip" data-bs-placement="left" title="Delete"><i class="material-icons">delete</i></a>';
+
+                return '<a onclick="javascript:removeConfirmation(\''.$file['path'].'\')" class="btn btn-simple btn-danger btn-icon remove" data-bs-toggle="tooltip" data-bs-placement="left" title="Delete"><i class="material-icons">delete</i></a>';
+            })
+            ->rawColumns(['name', 'created_at', 'action'])
+            ->make(true);
+    }
+
+    public function uploadFile(Request $request){
+        $filenameWithExt = $request->file('doc')->getClientOriginalName();
+            //Get just filename
+            $filename = pathinfo($filenameWithExt, PATHINFO_FILENAME);
+            // Get just ext
+            $extension = $request->file('doc')->getClientOriginalExtension();
+            // Filename to store
+            $fileNameToStore = $filename.'_'.time().'.'.$extension;
+            Storage::disk('uploads')->put($filename, file_get_contents($request->file('doc')->getRealPath()));
+            
+        Session::flash('message', 'File uploaded successfully!');
+        return redirect()->back();
+    }
+
+    public function delete(Request $request){
+        try{
+        unlink($request->path);
+        return response()->json('true', 200);
+    }catch(\Throwable $t){
+        return response()->json('false', 500);
+    }
     }
 }

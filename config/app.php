@@ -176,6 +176,7 @@ return [
         App\Providers\RouteServiceProvider::class,
 
         ZanySoft\Zip\ZipServiceProvider::class,
+        Yajra\DataTables\DataTablesServiceProvider::class,
     ],
 
     /*
@@ -229,6 +230,7 @@ return [
         'View' => Illuminate\Support\Facades\View::class,
 
         'Zip' => ZanySoft\Zip\ZipFacade::class,
+        'DataTables' => Yajra\DataTables\Facades\DataTables::class,
     ],
 
 ];

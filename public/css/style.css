@@ -463,3 +463,7 @@ line-height: 1.42857143;
 color: #333;
 white-space: nowrap;
 }
+
+.modal-open .modal, .modal.show{
+  opacity: 1;
+}

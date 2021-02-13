@@ -1,7 +1,5 @@
 @extends('layout.index')
 
-
-
 @section('content')
 <div class="container-fluid" style="height: 70%">
     <div class="row">
@@ -14,9 +12,12 @@
             <div class="pull-right">
                 <div class="btn-group">
                     <button class="btn btn-dropdown-user btn-sm dropdown-toggle" type="button" data-bs-toggle="dropdown" aria-expanded="false">
-                        {{Auth::user()->name}}
+                        {{GET_USER_NAME()}}
                     </button>
                     <ul class="dropdown-menu">
+                    @if(IS_ADMIN())
+                        <li><a href="/private">Private</a></li>
+                        @endif
                         <li><a href="/logout">Logout</a></li>
                     </ul>
                 </div>
