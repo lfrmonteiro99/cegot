@@ -28,7 +28,7 @@
                 <div class="row files-folder pt-5" style="background: white;">
                     @php
                     try{
-                    $currentPath = storage_path().'/app/public/atas';
+                    $currentPath = storage_path().'/app/public';
 
                     $directories = scandir($currentPath);
                     @endphp

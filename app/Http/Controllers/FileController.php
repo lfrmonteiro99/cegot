@@ -74,7 +74,7 @@ class FileController extends Controller
 
     public function index()
     {
-     /*   $path = storage_path() . '/app/public/atas';
+     /*   $path = storage_path() . '/app/public';
         $directoriesRaw = scandir($path);
 
         $directories = [];
@@ -88,7 +88,7 @@ class FileController extends Controller
     }
 
     public function getIndexTable(){
-        $path = storage_path().'/app/public/atas';
+        $path = storage_path().'/app/public';
         $directoriesRaw = scandir($path);
         foreach ($directoriesRaw as $dir) {
             if ($dir != '.' && $dir!= '..') {

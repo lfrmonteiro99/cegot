@@ -44,8 +44,8 @@ return [
 
         'uploads' => [
             'driver' => 'local',
-            'root' => storage_path('app/public/atas'),
-            'url' => env('APP_URL').'/storage/atas',
+            'root' => storage_path('app/public'),
+            'url' => env('APP_URL').'/storage',
             'visibility' => 'public',
         ],
 
