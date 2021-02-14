@@ -36,7 +36,6 @@
                     @foreach($directories as $i => $directory)
                     @if($directory != '.' && $directory != '..')
                     @if(is_dir($currentPath."/".$directory) && $directory != '.' && $directory != '..')
-                    {{dd($directory)}}
                     <div class="col-sm-3 col-12">
                         <div class="folder" data-current="{{$currentPath}}" data-path="{{$currentPath}}/{{$directory}}">
                             <span><i class="far fa-folder fa-2x"></i></span>

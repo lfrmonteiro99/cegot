@@ -367,7 +367,7 @@
 }
 
 .login-form{
-    opacity: 0.4;
+    opacity: 0.5;
 }
 
 .login-form:hover, .login-form:active, .login-form:focus{
@@ -375,11 +375,6 @@
 }
 
 .login-container{
-    position: fixed;
-  top: 50%;
-  left: 20%;
-  margin-top: -50px;
-  margin-left: -100px;
 }
 
 .fa-folder, .fa-file, .fa-file-word, .fa-file-excel, .fa-file-pdf{
@@ -466,4 +461,47 @@ white-space: nowrap;
 
 .modal-open .modal, .modal.show{
   opacity: 1;
+}
+
+html,body{
+  height:100%;
+}
+.carousel,.item,.active{
+  height:100%;
+}
+.carousel-inner{
+   height:100%;
+}
+
+.login-container.login-page .card-footer{
+  background: transparent;
+}
+
+.show{
+  opacity: 1;
+}
+
+.icon-right-backoffice{
+  color: inherit;
+  padding-top: 15px;
+  padding-bottom: 15px;
+  font-weight: 500;
+  font-size: 12px;
+  text-transform: uppercase;
+  border-radius: 3px;
+  padding-left: 15px;
+  padding-right: 15px;
+}
+
+.icon-right-backoffice-link, .icon-right-backoffice-link:hover{
+  color: black;
+}
+
+.icon-right-backoffice-link i{
+  font-size: 20px;
+}
+
+.visible{
+  visibility: visible!important;
+  opacity: 1!important;
 }

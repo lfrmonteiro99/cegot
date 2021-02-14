@@ -25,25 +25,25 @@
                                 @csrf
                                 <div class="mb-3">
                                     <label for="exampleFormControlInput0" class="form-label">Name</label>
-                                    <input type="text" required name="name" class="form-control" id="name" @if(isset($user)) value="{{$user->name}}" @endif>
+                                    <input type="text" required name="name" class="form-control px-3" id="name" @if(isset($user)) value="{{$user->name}}" @endif>
                                 </div>
 
                                 <div class="mb-3">
                                     <label for="exampleFormControlInput1" class="form-label">Email address</label>
-                                    <input type="email" name="email" required class="form-control" id="exampleFormControlInput1" @if(isset($user)) value="{{$user->email}}" @endif placeholder="name@example.com">
+                                    <input type="email" name="email" required class="form-control px-3" id="exampleFormControlInput1" @if(isset($user)) value="{{$user->email}}" @endif >
                                 </div>
 
-                                <div class="form-group">
+                                <div class="form-group mb-3">
 
                                     <label for="role" class="form-label">Type/Role of User</label>
-                                    <input required class="form-control" @if(isset($user)) value="{{$user->role}}" @endif list="datalistOptions" id="role" name="role" placeholder="Type to search...">
-                                    <datalist id="datalistOptions">
-                                        <option @if(isset($user) && $user->role == 'user') selected @endif value="user">
-                                        <option @if(isset($user) && $user->role == 'admin') selected @endif value="admin">
-                                    </datalist>
+                                    <select class="form-control" name="role" id="role">
+                                        <option disabled @if(!isset($user->role)) selected @endif>-- Select Option --</option>
+                                        <option @if(isset($user) && $user->role == 'user') selected @endif value="user">User</option>
+                                        <option @if(isset($user) && $user->role == 'admin') selected @endif value="admin">Admin</option>
+                                    </select>
+                                    
                                     @if(isset($create))
                                     <button class="btn btn-primary pull-right">Create</button>
-                                    <a class="btn btn-danger pull-right">Cancelar</a>
                                     @endif
                                     @if(isset($show))
                                     <button class="btn btn-primary pull-right">Update</button>

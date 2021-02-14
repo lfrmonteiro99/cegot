@@ -32,7 +32,11 @@ Route::get('login', [PublicController::class, 'login'])->name('login');
 
 Route::get('logout', [AuthController::class, 'logout'])->name('logout');
 
-Route::get('/private', [PrivateController::class, 'index'])->name('private');
+Route::get('/password-recovery', [AuthController::class, 'passwordRecoveryPage'])->name('password-recover-page');
+Route::get('/password-recovery/{code}', [AuthController::class, 'recoverPasswordPage'])->name('recover-password-page');
+Route::post('/submitEmailRecovery', [AuthController::class, 'submitEmailRecovery'])->name('submitEmailRecovery');
+
+Route::get('private', [PrivateController::class, 'index'])->name('private');
 
 Route::get('/private/user/index', [UserController::class, 'index'])->name('private.user.index');
 Route::get('/private/user/getIndexTable', [UserController::class, 'getIndexTable'])->name('private.userList');

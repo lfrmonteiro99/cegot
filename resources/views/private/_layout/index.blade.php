@@ -36,14 +36,54 @@
     @yield('header_styles')
 </head>
 
-<body>
+<body class="sidebar-mini">
     @include('private._layout.header')
     @include('private._layout.sidebar')
-    <div class="main-panel">
 
-        @yield('content')
+
+    <div class="main-panel" style="height: 100%">
+        <div class="container-fluid">
+            <button id="minimizeSidebar" class="btn btn-round btn-white btn-fill btn-just-icon pull-left">
+                <i class="material-icons visible-on-sidebar-regular">more_vert</i>
+                <i class="material-icons visible-on-sidebar-mini">view_list</i>
+            </button>
+            <div class="dropdown pull-right icon-right-backoffice">
+            <a href="#" class="icon-right-backoffice-link"><i class="material-icons">person</i></a>
+            <ul class="dropdown-menu logout-menu mt-3">
+                        <li>
+                            <a href="https://admin.cegot.pt/logout" onclick="event.preventDefault();
+                                                     document.getElementById('logout-form').submit();">
+                                Logout
+                            <div class="ripple-container"></div></a>
+
+                            <form id="logout-form" action="https://admin.cegot.pt/logout" method="POST" style="display: none;">
+                                <input type="hidden" name="_token" value="dTOIyfjp66nf1N4ICjpCrwthLWFK3DeWPSMy9yHC">
+                            </form>
+                        </li>
+
+                    </ul>
+            </div>
+
+        </div>
+    </div>
+    @yield('content')
     </div>
     @yield('scripts')
+    <script>
+        $(document).on('click', '#minimizeSidebar', function() {
+            if (!$('body').hasClass('sidebar-mini'))
+                $('body').addClass('sidebar-mini')
+            else
+                $('body').removeClass('sidebar-mini')
+        })
+
+        $(document).on('click', '.icon-right-backoffice', function(){
+            if(!$(".logout-menu").hasClass('visible'))
+            $(".logout-menu").addClass('visible');
+            else
+            $(".logout-menu").removeClass('visible');
+        })
+    </script>
 </body>
 
 </html>
