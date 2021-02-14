@@ -99,7 +99,6 @@
     });
 
     function removeConfirmation(path) {
-        alert(1);
         bootbox.confirm("Are you sure you want to remove this file?", function(result) {
             if (result) {
                 $.ajax({
