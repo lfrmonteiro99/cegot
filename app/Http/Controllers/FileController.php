@@ -91,7 +91,7 @@ class FileController extends Controller
         $path = storage_path().'/app/public';
         $directoriesRaw = scandir($path);
         foreach ($directoriesRaw as $dir) {
-            if ($dir != '.' && $dir!= '..') {
+            if ($dir != '.' && $dir!= '..' && $dir != '.gitignore' && $dir != 'download.zip') {
                     $directories[] = ['name' => $dir, 'folder' => is_dir($path . "/" . $dir), 'path' => $path . "/" . $dir];
             }
         }
