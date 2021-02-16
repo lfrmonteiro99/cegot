@@ -34,7 +34,7 @@
                     @endphp
 
                     @foreach($directories as $i => $directory)
-                    @if($directory != '.' && $directory != '..')
+                    @if($directory != '.' && $directory != '..' && $directory != '.gitignore' && $directory != 'download.zip')
                     @if(is_dir($currentPath."/".$directory) && $directory != '.' && $directory != '..')
                     <div class="col-sm-3 col-12">
                         <div class="folder" data-current="{{$currentPath}}" data-path="{{$currentPath}}/{{$directory}}">

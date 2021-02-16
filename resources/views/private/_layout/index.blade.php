@@ -36,12 +36,12 @@
     @yield('header_styles')
 </head>
 
-<body class="sidebar-mini">
+<body class="">
     @include('private._layout.header')
     @include('private._layout.sidebar')
 
 
-    <div class="main-panel" style="height: 100%">
+    <div class="main-panel" style="">
         <div class="container-fluid">
             <button id="minimizeSidebar" class="btn btn-round btn-white btn-fill btn-just-icon pull-left">
                 <i class="material-icons visible-on-sidebar-regular">more_vert</i>
@@ -65,8 +65,9 @@
             </div>
 
         </div>
-    </div>
     @yield('content')
+    </div>
+
     </div>
     @yield('scripts')
     <script>
