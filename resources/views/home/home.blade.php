@@ -15,7 +15,7 @@
                         {{GET_USER_NAME()}}
                     </button>
                     <ul class="dropdown-menu">
-                    @if(IS_ADMIN())
+                        @if(IS_ADMIN())
                         <li><a href="/private">Private</a></li>
                         @endif
                         <li><a href="/logout">Logout</a></li>
@@ -35,7 +35,7 @@
 
                     @foreach($directories as $i => $directory)
                     @if($directory != '.' && $directory != '..' && $directory != '.gitignore' && $directory != 'download.zip')
-                    @if(is_dir($currentPath."/".$directory) && $directory != '.' && $directory != '..')
+                    @if(is_dir($currentPath."/".$directory) && $directory != '.' && $directory != '..' && $directory != '.gitignore')
                     <div class="col-sm-3 col-12">
                         <div class="folder" data-current="{{$currentPath}}" data-path="{{$currentPath}}/{{$directory}}">
                             <span><i class="far fa-folder fa-2x"></i></span>
@@ -184,10 +184,12 @@
                     html += "<div class='col-3'>";
                     let pathToReturn = "'" + file.path + "'";
 
-                    if (file.folder)
-                        html += "<div class='folder' data-current='" + current + "' data-path='" + file.path + "'><span><i class='far fa-folder fa-2x'></i></span><p>" + file.name + "</p></div>";
-                    else
-                        html += "<div class='file' data-path='" + file.path + "'><span><i class='far fa-file fa-2x'></i></span><p>" + file.name + "</p></div>";
+                    if (file.folder && file.name != '.gitignore' && file.name != 'download.zip')
+                        html += "<div class='folder' data-name='"+file.name+"' data-current='" + current + "' data-path='" + file.path + "'><span><i class='far fa-folder fa-2x'></i></span><p>" + file.name + "</p></div>";
+                    else{
+                    if (file.name != '.gitignore' && file.name != 'download.zip')
+                        html += "<div class='file' data-name='"+file.name+"' data-path='" + file.path + "'><span><i class='far fa-file fa-2x'></i></span><p>" + file.name + "</p></div>";
+                    }
 
                     html += "</div>";
 

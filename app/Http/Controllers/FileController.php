@@ -22,7 +22,7 @@ class FileController extends Controller
         $directories = [];
 
         foreach ($directoriesRaw as $dir) {
-            if ($dir != '.') {
+            if ($dir != '.' && $dir != '.gitignore' && $dir != 'download.zip') {
                 if ($dir == '..')
                     $directories[] = ['name' => $dir, 'folder' => true, 'path' => $current];
                 else
