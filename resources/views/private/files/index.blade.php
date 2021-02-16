@@ -24,7 +24,18 @@
                     <form action="/private/file/uploadFile" method="post" enctype="multipart/form-data">
                         @csrf
                         <div class="card p-5">
-                            <input type="file" id="doc" name="doc" />
+                            <div class="form group">
+                                <label class="form-label">Escolher pasta para onde irá o ficheiro:</label>
+                                <select class="form-control" name="folder" required>
+                                    <option disabled selected>-- Seleccionar opção --</option>
+                                    </option>
+                                    @foreach($directories as $directory)
+                                    <option value="{{$directory['path']}}">{{ $directory['name'] }}</option>
+                                    @endforeach
+                                </select>
+                            </div>
+                            <label class="form-label mt-3">Escolher ficheiro:</label>
+                                <input type="file" class="" id="doc" required name="doc" />
                         </div>
                         <button class="btn btn-primary pull-right">Submit</button>
                         <a class="btn btn-danger pull-right" data-bs-dismiss="modal">Close</a>
