@@ -44,8 +44,11 @@
                     </div>
                     @else
                     <?php
+                    echo "urowvernvor";
                     $explode = explode(".", $directory);
                     $extension = end($explode);
+                    echo 1;
+                    echo $extension;
                     ?>
                     <div class="col-sm-3 col-12">
                         <div class="file" data-name="{{$directory}}" data-path="{{$currentPath}}/{{$directory}}">
@@ -183,12 +186,44 @@
                 response.map(function(file) {
                     html += "<div class='col-3'>";
                     let pathToReturn = "'" + file.path + "'";
-
-                    if (file.folder && file.name != '.gitignore' && file.name != 'download.zip')
-                        html += "<div class='folder' data-name='"+file.name+"' data-current='" + current + "' data-path='" + file.path + "'><span><i class='far fa-folder fa-2x'></i></span><p>" + file.name + "</p></div>";
-                    else{
-                    if (file.name != '.gitignore' && file.name != 'download.zip')
-                        html += "<div class='file' data-name='"+file.name+"' data-path='" + file.path + "'><span><i class='far fa-file fa-2x'></i></span><p>" + file.name + "</p></div>";
+                    console.log(file);
+                    if (file.folder && file.name != '.gitignore' && file.name != 'download.zip') {
+                        console.log("um")
+                        html += "<div class='folder' data-name='" + file.name + "' data-current='" + current + "' data-path='" + file.path + "'><span><i class='far fa-folder fa-2x'></i></span><p>" + file.name + "</p></div>";
+                    } else {
+                        console.log("dois")
+                        if (file.name != '.gitignore' && file.name != 'download.zip') {
+                            let splitted = file.name.split(".");
+                            let className = "";
+                            switch (splitted[1]) {
+                                case 'docx':
+                                    className = "far fa-file-word fa-2x";
+                                    break;
+                                case 'doc':
+                                    className = "far fa-file-word fa-2x";
+                                    break;
+                                case 'xls':
+                                    className = 'far fa-file-excel fa-2x';
+                                    break;
+                                case 'xlsx':
+                                    className = 'far fa-file-excel fa-2x';
+                                    break;
+                                case 'xls':
+                                    className = 'far fa-file-excel fa-2x';
+                                    break;
+                                case 'csv':
+                                    className = 'far fa-file-excel fa-2x';
+                                    break;
+                                case 'pdf':
+                                    className = 'far fa-file-pdf fa-2x';
+                                    break;
+                                default:
+                                    className = 'far fa-file fa-2x';
+                                    break;
+                            }
+                            console.log(className);
+                            html += "<div class='file' data-name='" + file.name + "' data-path='" + file.path + "'><span><i class='" + className + "'></i></span><p>" + file.name + "</p></div>";
+                        }
                     }
 
                     html += "</div>";
