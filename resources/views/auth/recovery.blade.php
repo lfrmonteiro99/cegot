@@ -7,8 +7,10 @@
             <div class="container" style="height: 100%">
                 <div class="row" style="height: 100%">
                     <div class="col-sm-5 col-12 mx-auto my-auto justify-content-center" style="z-index: 99999999">
-                        <form action="{{url('recovery-password')}}" method="post">
+                        <form action="{{url('/recovery-password')}}" method="post">
                             @csrf
+                            <input type="hidden" name="code" value="{{$user->recovery_code}}" />
+                            
                             <div class="card card-login login-form">
                                 <div class="card-header text-center" data-background-color="primary">
                                     <h4 class="card-title">Password Recovery</h4>

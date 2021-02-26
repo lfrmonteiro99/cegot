@@ -34,12 +34,12 @@
                 </div>
                 <div class="footer text-center">
                   <button type="submit" class="btn btn-primary btn-simple btn-wd btn-lg">
-                    Log in
+                    Entrar
                   </button>
                 </div>
                 <div class="card-footer text-center">
                   <a href="{{route('password-recover-page')}}" type="submit" class="btn btn-default btn-simple btn-wd btn-sm">
-                    Password Recovery
+                    Recuperação de password
                     <div class="ripple-container"></div>
                   </a>
                 </div>

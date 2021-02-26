@@ -16,9 +16,9 @@
                     </button>
                     <ul class="dropdown-menu">
                         @if(IS_ADMIN())
-                        <li><a href="/private">Private</a></li>
+                        <li><a href="/private">Administração</a></li>
                         @endif
-                        <li><a href="/logout">Logout</a></li>
+                        <li><a href="/logout">Sair</a></li>
                     </ul>
                 </div>
             </div>
@@ -44,11 +44,8 @@
                     </div>
                     @else
                     <?php
-                    echo "urowvernvor";
                     $explode = explode(".", $directory);
                     $extension = end($explode);
-                    echo 1;
-                    echo $extension;
                     ?>
                     <div class="col-sm-3 col-12">
                         <div class="file" data-name="{{$directory}}" data-path="{{$currentPath}}/{{$directory}}">
@@ -89,15 +86,15 @@
 
 <div class="data-to-download">
     <i class="far fa-window-close pull-right"></i>
-    <h3>Selected files</h3>
+    <h3>Ficheiros seleccionados</h3>
     <div class="list-downloads mt-3"></div>
 </div>
 
 <div style="box-shadow: 0 10px 30px -12px rgba(0,0,0,.42),0 4px 25px 0 rgba(0,0,0,.12),0 8px 10px -5px rgba(0,0,0,.2); text-align: center; position: fixed; bottom: 0; height: 25%; background: white; width: 100%">
-    <h3>Files to download</h3>
+    <h3>Ficheiros para descarregar</h3>
     <div class="downloads mt-3"></div>
-    <p class="open-panel hidden">To view selected files click <a class="open-panel-link">here</a>.</p>
-    <div class=""><button class="btn btn-download">Download files</button></div>
+    <p class="open-panel hidden">Para listar os ficheiros seleccionados, clique <a class="open-panel-link">aqui</a>.</p>
+    <div class=""><button class="btn btn-download">Descarregar ficheiros</button></div>
 </div>
 @endsection
 
@@ -221,7 +218,6 @@
                                     className = 'far fa-file fa-2x';
                                     break;
                             }
-                            console.log(className);
                             html += "<div class='file' data-name='" + file.name + "' data-path='" + file.path + "'><span><i class='" + className + "'></i></span><p>" + file.name + "</p></div>";
                         }
                     }
@@ -278,14 +274,13 @@
         $(".list-downloads").html(html)
 
         if (downloads.length === 0) {
-            $(".downloads").html('No files selected.')
-            $(".list-downloads").html('No files selected.')
+            $(".downloads").html('Sem ficheiros seleccionados.')
+            $(".list-downloads").html('Sem ficheiros seleccionados.')
             $(".open-panel").addClass('hidden')
         }
     }
 
     $(".btn-download").click(function() {
-        console.log(downloads);
         if (total > 0) {
             $.ajax({
                 url: "{{route('downloadFiles')}}",
@@ -296,9 +291,18 @@
                 },
                 beforeSend: function() {},
                 success: function(response) {
-                    console.log(response);
-                    console.log("eronro");
+
+
                     window.location = response;
+
+                    downloads = [];
+                    downloadsPath = [];
+                    total = 0;
+
+                    $(".files-folder").find('i').map(function(index, icon) {
+                        $(icon).removeClass('selected');
+                    })
+                    updateListToDownload();
 
                 },
                 error: function(error) {

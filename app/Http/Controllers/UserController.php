@@ -59,6 +59,8 @@ class UserController extends Controller
         ]);
 	
 	$request->request->add(['to' => $user->email]);
+    $request->request->add(['template' => 'creation']);
+
 
 	app('App\Http\Controllers\EmailController')->sendEmail($request);
 

@@ -11,7 +11,7 @@
                             @csrf
                             <div class="card card-login login-form">
                                 <div class="card-header text-center" data-background-color="primary">
-                                    <h4 class="card-title">Password Recovery</h4>
+                                    <h4 class="card-title">Recuperação de password</h4>
                                 </div>
                                 <div class="card-content">
                                     @if(Session::has('message'))
@@ -28,11 +28,11 @@
                                 </div>
                                 <div class="footer text-center">
                                     <button type="submit" class="btn btn-primary btn-simple btn-wd btn-lg">
-                                        Send
+                                        Enviar
                                     </button>
                                 </div>
                                 <div class="card-footer">
-                                    <a href="{{route('login')}}"><span class="fas fa-arrow-left" style="margin-right: 8px"></span>Go back</a>
+                                    <a href="{{route('login')}}"><span class="fas fa-arrow-left" style="margin-right: 8px"></span>Voltar atrás</a>
                                 </div>
                             </div>
 

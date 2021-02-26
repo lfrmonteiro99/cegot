@@ -11,7 +11,7 @@ use App\Models\User;
 class SendEmail extends Mailable
 {
     use Queueable, SerializesModels;
-    
+
     public $details;
 
     /**
@@ -31,15 +31,32 @@ class SendEmail extends Mailable
      */
     public function build()
     {
-$user = User::whereEmail($this->details['to'])->first();
+        $user = User::whereEmail($this->details['to'])->first();
 
-$link = 'http://documentocegot.uc.pt/password-recovery/'.$user->recovery_code;
+        $link = 'http://documentocegot.uc.pt/password-recovery/' . $user->recovery_code;
 
-$data = [];
-$data['link'] = $link;
+        $data = [];
+        $data['link'] = $link;
 
-return $this->subject('Apresentação da nova plataforma do CEGOT - Documento Cegot')
-                    ->view('emails.presentationEmail', $data);
-        return $this->view('view.name');
+        $template = $this->details['template'];
+        $view = '';
+        $subject = '';
+        switch ($template) {
+            case 'presentation':
+                $view = 'emails.presentationEmail';
+                $subject = 'Documento Cegot - Apresentação da nova plataforma do CEGOT';
+                break;
+            case 'recovery':
+                $subject = 'Documento Cegot - Recuperação de password - Documento Cegot';
+                $view = 'emails.recoveryEmail';
+                break;
+            case 'creation':
+                $subject = 'Documento Cegot - Criação de um novo registo';
+                $view = 'emails.creationEmail';
+                break;
+        }
+
+        return $this->subject('Apresentação da nova plataforma do CEGOT - Documento Cegot')
+            ->view($view, $data);
     }
 }

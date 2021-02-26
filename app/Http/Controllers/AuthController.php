@@ -24,10 +24,10 @@ class AuthController extends Controller
                 return redirect()->route('home');
             }
 
-            Session::flash('message', 'The provided credentials do not match our records.');
+            Session::flash('message', 'As credenciais não estão corretas.');
             return redirect()->back();
         } catch (\Throwable $e) {
-            Session::flash('message', 'The provided credentials do not match our records.');
+            Session::flash('message', 'As credenciais não estão corretas.');
             report($e);
 
             return redirect()->back();
@@ -50,10 +50,9 @@ class AuthController extends Controller
         return view('auth.recovery', $data);
     }
 
-    public function recoverPassword(Request $request, $code)
+    public function recoverPassword(Request $request)
     {
-dd(2);
-        $user = User::whereRecoveryCode($code)->first();
+        $user = User::whereRecoveryCode($request->input('code'))->first();
 
         $user->password = Hash::make($request->input('password'));
 
@@ -75,9 +74,17 @@ dd(2);
             $user->recovery_code = GENERATE_RANDOM_STRING(10);
 
             $user->save();
+
+            $request->request->add(['to' => $user->email]);
+            $request->request->add(['template' => 'recovery']);
+
+
+            app('App\Http\Controllers\EmailController')->sendEmail($request);
+
             return view('auth.sendRecoveryPasswordSuccess');
         } catch (Throwable $t) {
-            Session::flash('message', "Email doesn't exists in our records.");
+            dd($t->getMessage());
+            Session::flash('message', "O email não está registado na plataforma.");
             return redirect()->back();
         }
     }
