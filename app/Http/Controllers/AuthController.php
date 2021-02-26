@@ -52,6 +52,7 @@ class AuthController extends Controller
 
     public function recoverPassword(Request $request, $code)
     {
+dd(2);
         $user = User::whereRecoveryCode($code)->first();
 
         $user->password = Hash::make($request->input('password'));

@@ -54,8 +54,13 @@ class UserController extends Controller
             'name' => $request->name,
             'email' => $request->email,
             'role' => $request->role,
-            'password' => Hash::make('passwordbyadmin')
+            'password' => Hash::make('passwordbyadmin'),
+	    'recovery_code' => GENERATE_RANDOM_STRING(10),
         ]);
+	
+	$request->request->add(['to' => $user->email]);
+
+	app('App\Http\Controllers\EmailController')->sendEmail($request);
 
         Session::flash('message', 'User created successfully!');
 

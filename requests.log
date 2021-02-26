@@ -8,3 +8,21 @@
 13.66.139.75 - - [13/Feb/2021:15:26:02 +0000] "GET / HTTP/1.1" 403 202 "-" "Mozilla/5.0 (compatible; bingbot/2.0; +http://www.bing.com/bingbot.htm)"
 148.63.138.184 - - [13/Feb/2021:15:26:50 +0000] "GET / HTTP/1.1" 403 202 "-" "Mozilla/5.0 (X11; Ubuntu; Linux x86_64; rv:85.0) Gecko/20100101 Firefox/85.0"
 148.63.138.184 - - [13/Feb/2021:15:26:51 +0000] "GET /favicon.ico HTTP/1.1" 200 - "http://healthyregionseurope.uc.pt/" "Mozilla/5.0 (X11; Ubuntu; Linux x86_64; rv:85.0) Gecko/20100101 Firefox/85.0"
+95.93.235.78 - - [25/Feb/2021:22:01:39 +0000] "GET / HTTP/1.1" 302 41502
+95.93.235.78 - - [25/Feb/2021:22:01:39 +0000] "GET /login.html HTTP/1.1" 200 5384
+95.93.235.78 - - [25/Feb/2021:22:01:39 +0000] "GET /js/modernizr.custom.63321.js HTTP/1.1" 404 226
+95.93.235.78 - - [25/Feb/2021:22:01:39 +0000] "GET /css/style.css HTTP/1.1" 304 -
+95.93.235.78 - - [25/Feb/2021:22:01:39 +0000] "GET /images/Untitled.png HTTP/1.1" 304 -
+95.93.235.78 - - [25/Feb/2021:22:01:39 +0000] "GET /js/main.js HTTP/1.1" 304 -
+95.93.235.78 - - [25/Feb/2021:22:01:52 +0000] "GET / HTTP/1.1" 302 41502
+95.93.235.78 - - [25/Feb/2021:22:01:52 +0000] "GET /js/modernizr.custom.63321.js HTTP/1.1" 404 226
+95.93.235.78 - - [25/Feb/2021:22:01:52 +0000] "GET /js/modernizr.custom.63321.js HTTP/1.1" 404 226
+95.93.235.78 - - [25/Feb/2021:22:03:39 +0000] "GET / HTTP/1.1" 302 41502
+95.93.235.78 - - [25/Feb/2021:22:03:40 +0000] "GET /js/modernizr.custom.63321.js HTTP/1.1" 404 226
+95.93.235.78 - - [25/Feb/2021:22:04:07 +0000] "GET / HTTP/1.1" 302 41502
+95.93.235.78 - - [25/Feb/2021:22:04:07 +0000] "GET /js/modernizr.custom.63321.js HTTP/1.1" 404 226
+95.93.235.78 - - [25/Feb/2021:22:04:08 +0000] "GET /js/modernizr.custom.63321.js HTTP/1.1" 404 226
+99.122.157.75 - - [25/Feb/2021:22:05:22 +0000] "GET / HTTP/1.1" 302 41502
+95.93.235.78 - - [25/Feb/2021:22:08:21 +0000] "GET / HTTP/1.1" 302 41502
+95.93.235.78 - - [25/Feb/2021:22:08:21 +0000] "GET /js/modernizr.custom.63321.js HTTP/1.1" 404 226
+95.93.235.78 - - [25/Feb/2021:22:08:22 +0000] "GET /js/modernizr.custom.63321.js HTTP/1.1" 404 226

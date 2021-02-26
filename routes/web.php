@@ -6,6 +6,7 @@ use App\Http\Controllers\PrivateController;
 use App\Http\Controllers\AuthController;
 use App\Http\Controllers\UserController;
 use App\Http\Controllers\FileController;
+use App\Http\Controllers\EmailController;
 
 /*
 |--------------------------------------------------------------------------
@@ -34,6 +35,7 @@ Route::get('logout', [AuthController::class, 'logout'])->name('logout');
 
 Route::get('/password-recovery', [AuthController::class, 'passwordRecoveryPage'])->name('password-recover-page');
 Route::get('/password-recovery/{code}', [AuthController::class, 'recoverPasswordPage'])->name('recover-password-page');
+Route::post('/recovery-password', [AuthController::class, 'recoverPassword'])->name('recovery-password');
 Route::post('/submitEmailRecovery', [AuthController::class, 'submitEmailRecovery'])->name('submitEmailRecovery');
 
 Route::get('private', [PrivateController::class, 'index'])->name('private');
@@ -50,3 +52,5 @@ Route::get('/private/files/index', [FileController::class, 'index'])->name('priv
 Route::get('/private/files/getIndexTable', [FileController::class, 'getIndexTable'])->name('private.files.getIndexTable');
 Route::post('/private/file/uploadFile', [FileController::class, 'uploadFile'])->name('private.files.uploadFile');
 Route::post('/private/file/delete', [FileController::class, 'delete'])->name('private.files.deleteFile');
+
+Route::get('/sendEmail', [EmailController::class, 'sendEmail']);
