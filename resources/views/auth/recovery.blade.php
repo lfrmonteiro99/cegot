@@ -10,10 +10,10 @@
                         <form action="{{url('/recovery-password')}}" method="post">
                             @csrf
                             <input type="hidden" name="code" value="{{$user->recovery_code}}" />
-                            
+
                             <div class="card card-login login-form">
                                 <div class="card-header text-center" data-background-color="primary">
-                                    <h4 class="card-title">Password Recovery</h4>
+                                    <h4 class="card-title">Recuperação de password</h4>
                                 </div>
                                 <div class="card-content">
                                     <div class="input-group">
@@ -31,7 +31,7 @@
                                 </div>
                                 <div class="footer text-center">
                                     <button type="submit" class="btn btn-primary btn-simple btn-wd btn-lg">
-                                        Submit
+                                        Submeter
                                     </button>
                                 </div>
 
@@ -59,7 +59,7 @@
 
     function validatePassword() {
         if (password.value != confirm_password.value) {
-            confirm_password.setCustomValidity("Passwords Don't Match");
+            confirm_password.setCustomValidity("Passwords não coincidem");
         } else {
             confirm_password.setCustomValidity('');
         }

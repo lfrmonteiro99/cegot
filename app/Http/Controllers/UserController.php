@@ -111,4 +111,40 @@ class UserController extends Controller
         return response()->json('false', 500);
     }
     }
+
+    public function importUsers(){
+        $csv = array_map('str_getcsv', file(storage_path()."/equipa_test.csv")); 
+        foreach($csv as $line){
+            $exploded = explode (';', $line[0]);
+            $user = User::create([
+                'name' => $exploded[0],
+                'email' => $exploded[5],
+                'role' => 'user',
+                'password' => Hash::make('passwordbyadmin'),
+                'recovery_code' => GENERATE_RANDOM_STRING(10),
+            ]);
+
+            $details = [
+                'title' => 'Mail from ItSolutionStuff.com',
+                'body' => 'This is for testing email using smtp',
+                'to' => $user->email,
+                'template' => 'presentation',
+            ];
+
+            \Mail::to($user->email)->send(new \App\Mail\SendEmail($details));
+        }
+
+        dd("Fim");
+    }
+
+    public function sendEmailPresentationUsers(Request $request){
+        try{
+            $users = User::all();
+            foreach($users as $user){
+                
+            }
+        }catch(\Throwable $t){
+
+        }
+    }
 }
