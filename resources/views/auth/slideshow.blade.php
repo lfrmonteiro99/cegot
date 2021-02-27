@@ -20,7 +20,7 @@ while(count($imagesToShow) < 3){
 }
 
 ?>
-<div id="carouselExampleIndicators" style="position: absolute; width: 100%; top: 68px; padding-bottom: 100px" class="carousel slide" data-bs-ride="carousel">
+<div id="carouselExampleIndicators" style="position: absolute; width: 100%; top: 68px" class="carousel slide" data-bs-ride="carousel">
     <ol class="carousel-indicators">
         @foreach($imagesToShow as $key => $image)
 
