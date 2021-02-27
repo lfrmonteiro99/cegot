@@ -15,11 +15,12 @@
 
                                 <div class="input-group">
                                     <p>A sua password foi mudada com sucesso.</p>
+<p>Caso queira aceder ao site do CEGOT, carregue <a target="_blank" href="https://www.cegot.pt">aqui</a></p>
                                 </div>
                             </div>
 
                             <div class="card-footer">
-                                <a href="{{route('login')}}"><span class="fas fa-arrow-left" style="margin-right: 8px"></span>Voltar atrás</a>
+                                <a href="{{route('login')}}"><span class="fas fa-arrow-left" style="margin-right: 8px"></span>Efetuar login</a>
                             </div>
                         </div>
 

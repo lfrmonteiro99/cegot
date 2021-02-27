@@ -122,6 +122,7 @@ class UserController extends Controller
                 'role' => 'user',
                 'password' => Hash::make('passwordbyadmin'),
                 'recovery_code' => GENERATE_RANDOM_STRING(10),
+		'role' => $exploded[7],
             ]);
 
             $details = [

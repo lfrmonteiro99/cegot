@@ -44,14 +44,14 @@ class SendEmail extends Mailable
         switch ($template) {
             case 'presentation':
                 $view = 'emails.presentationEmail';
-                $subject = 'Documento Cegot - Apresentação da nova plataforma do CEGOT';
+                $subject = 'Apresentação da nova plataforma do CEGOT - DocumentoCEGOT';
                 break;
             case 'recovery':
-                $subject = 'Documento Cegot - Recuperação de password - Documento Cegot';
+                $subject = 'Recuperação de password - DocumentoCEGOT';
                 $view = 'emails.recoveryEmail';
                 break;
             case 'creation':
-                $subject = 'Documento Cegot - Criação de um novo registo';
+                $subject = 'Criação de um novo registo - DocumentoCEGOT';
                 $view = 'emails.creationEmail';
                 break;
         }
