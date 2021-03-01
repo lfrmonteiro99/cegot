@@ -113,7 +113,8 @@ class UserController extends Controller
     }
 
     public function importUsers(){
-        $csv = array_map('str_getcsv', file(storage_path()."/equipa_test_new.csv")); 
+        $csv = array_map('str_getcsv', file(storage_path()."/equipa-test-new.csv")); 
+$emails = 0;
         foreach($csv as $line){
             $exploded = explode (';', $line[0]);
             $user = User::create([
@@ -133,10 +134,11 @@ class UserController extends Controller
 
 try{
             \Mail::to($user->email)->send(new \App\Mail\SendEmail($details));
+$emails++;
 }catch(\Throwable $t){}
         }
 
-        dd("Fim");
+        dd("Fim", $emails);
     }
 
     public function sendEmailPresentationUsers(Request $request){
